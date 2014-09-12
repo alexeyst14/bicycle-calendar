@@ -1,0 +1,5 @@
+/.idea/
+/vendor/
+/web/files/
+/web/assets/
+/web/protected/runtime/

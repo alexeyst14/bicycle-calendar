@@ -1,0 +1,63 @@
+#page {
+    background: #eeeeee;
+    background-image: url('/images/bg1.jpg');
+    background-position-y: 40px;
+    /* background-repeat: no-repeat;*/
+    
+}
+table.month {
+    margin: 0 10px 20px 10px;
+    display: inline-table;
+}
+
+table.month .monthname {
+    font-weight: bold;
+    font-size: 16pt;
+    color: #DD6900;
+}
+
+table.month .daynames td {
+    color: #2E2E2E;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-right: 11pt;
+}
+
+table.month tr.date td {
+    padding-right: 17px;
+}
+
+div.monthsblock {
+    margin: 0 auto;
+}
+
+#statistics {
+    padding: 10px;
+    margin: 10px;
+  /*  border-bottom: 1px solid #fff; */
+ /*   border-top: 2px solid #ddd; */
+}
+
+#calendar {
+    /* margin-left: 60px;*/
+}
+
+input.distInput  {
+    width: 35px;
+    color: #0044cc !important;
+    font-size: 12px !important;
+    text-align: center;
+}
+
+input.monthInput {
+    width: 60px;
+    text-align: right;
+}
+
+h1.calendar {
+    color: #DD6900;
+    text-align: center;
+    text-shadow: 2px 2px 4px #666;
+    filter: dropshadow(color=#666, offx=2, offy=2);
+    padding: 10px 0;
+}

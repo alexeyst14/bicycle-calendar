@@ -1,0 +1,92 @@
+<?php
+
+date_default_timezone_set('Europe/Kiev');
+
+// uncomment the following to define a path alias
+// Yii::setPathOfAlias('local','path/to/local-folder');
+
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('calendar', dirname(__FILE__).'/../extensions/calendar');
+
+// This is the main Web application configuration. Any writable
+// CWebApplication properties can be configured here.
+return array(
+	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+	'name'=>'Вело-календарь',
+    'theme'=>'bootstrap',
+    'language' => 'ru',
+
+	// preloading 'log' component
+	'preload'=>array('log'),
+
+	// autoloading model and component classes
+	'import'=>array(
+		'application.models.*',
+		'application.components.*',
+        'ext.YiiMailer.YiiMailer',
+	),
+
+	'modules'=>array(
+		'gii'=>array(
+            'generatorPaths'=>array('bootstrap.gii'),
+			'class'=>'system.gii.GiiModule',
+			'password'=>'stirlic',
+			// If removed, Gii defaults to localhost only. Edit carefully to taste.
+			'ipFilters'=>array('127.0.0.1','::1'),
+		),
+	),
+
+	// application components
+	'components'=>array(
+        'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
+		'user'=>array(
+			// enable cookie-based authentication
+			'allowAutoLogin'=>true,
+            'class' => 'WebUser',
+		),
+        
+		'urlManager'=>array(
+            'showScriptName'=>false,
+			'urlFormat'=>'path',
+			'rules'=>array(
+				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+			),
+		),
+		'db'=>array(
+            'tablePrefix' => 'bc_',
+			'connectionString' => 'mysql:host=localhost;dbname=bikecalendar',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+		),        
+		'errorHandler'=>array(
+			// use 'site/error' action to display errors
+			'errorAction'=>'site/error',
+		),
+		'log'=>array(
+			'class'=>'CLogRouter',
+			'routes'=>array(
+				array(
+					'class'=>'CFileLogRoute',
+					'levels'=>'error, warning',
+				),
+				array(
+					'class'=>'CWebLogRoute',
+//                    'categories'=>'system.db.*',
+				),
+			),
+		),
+	),
+
+	// application-level parameters that can be accessed
+	// using Yii::app()->params['paramName']
+	'params'=>array(
+		// this is used in contact page
+		'adminEmail'=>'alexey.kiselev14@gmail.com',
+	),
+);
